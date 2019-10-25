@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block body %}
+<div class="card-columns p-5">
+    {% if not todos%}
+    <h4 class="text-center m-5 p-5">No results to show.!</h4>
+    {% endif %}
+    {% for todo in todos %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"><i class="fas fa-calendar-day p-2"></i>{{todo.date.strftime('%B %d, %Y')}}</h4>
+            <p class="card-text"><i class="fas fa-sticky-note p-2"></i>{{todo.message}}</p>
+            <a href="/update/{{todo.id}}" class="card-link btn btn-warning">Update</a>
+            <a href="/delete/{{todo.id}}" class="card-link btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
